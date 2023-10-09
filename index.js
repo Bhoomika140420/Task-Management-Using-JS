@@ -75,6 +75,25 @@ const deleteTask = (e) => {
 }
 
 //edit function
+const editTask = (e) => {
+    const targetID = e.getAttribute("name");
+    console.log(e);
+    console.log(e.parentNode);    
+    console.log(e.parentNode.parentNode.parentNode.childNodes); // prints all the childnodes  //(note:print chidlnodes to check their index)
+    
+    console.log(e.parentNode.parentNode.parentNode.childNodes[5].childNodes[1]); //card-header  
+    console.log(e.parentNode.parentNode.parentNode.childNodes[5].childNodes[3]); //card-img-top
+    console.log(e.parentNode.parentNode.parentNode.childNodes[5].childNodes[5]); //card-body
+    
+    e.parentNode.parentNode.parentNode.childNodes[5].childNodes[1].setAttribute("contenteditable", "true");   //Editing content of card-header
+    e.parentNode.parentNode.parentNode.childNodes[5].childNodes[3].setAttribute("contenteditable", "true");   //Editing content of card-img-top
+    e.parentNode.parentNode.parentNode.childNodes[5].childNodes[5].setAttribute("contenteditable", "true");   //Editing content of card-body
+
+    console.log(e.parentNode.parentNode.parentNode.childNodes[7].childNodes[1]); //targetin' open task to chnages its content to save changes
+    e.parentNode.parentNode.parentNode.childNodes[7].childNodes[1].style.setProperty("border","1px solid white") //stlying css using js 
+    e.parentNode.parentNode.parentNode.childNodes[7].childNodes[1].setAttribute("onclick", "saveEditTask(this)")
+    e.parentNode.parentNode.parentNode.childNodes[7].childNodes[1].innerHTML = "SAVE CHANGES"
+}
 const saveEditTask =(e) =>{
     const targetId = e.getAttribute("name")
     const taskTitle = e.parentNode.parentNode.childNodes[5].childNodes[1]
